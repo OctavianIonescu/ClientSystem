@@ -1,0 +1,54 @@
+﻿@page
+@model ClientSystem.Pages.Views.IndexModel
+@{
+}
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style>
+		div {
+			padding-top: 50px;
+			padding-right: 50px;
+			padding-bottom: 50px;
+			padding-left: 50px;
+		}
+
+		label {
+			display: inline-block;
+			width: 150px;
+			text-align: right;
+		}
+	</style>
+	<meta charset="UTF-8">
+	<title>List of clients</title>
+</head>
+<a class="btn btn-primary btn-sm" href="/views/create">New Client</a>
+<table class="table">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Phone</th>
+			<th>Address</th>
+			<th>Created At</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var item in Model.Clients)
+		{
+			<tr>
+				<td>@item.clientID</td>
+				<td>@item.fullName</td>
+				<td>@item.email</td>
+				<td>@item.phoneNumber</td>
+				<td>@item.address</td>
+				<td>@item.created_at.ToString("yyyy-MM-dd")</td>
+				<td>
+					<a class="btn btn-primary btn-sm" href="/views/edit?id=@item.clientID">Edit</a>
+					<a class="btn btn-primary btn-sm" href="/views/delete?id=@item.clientID">Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

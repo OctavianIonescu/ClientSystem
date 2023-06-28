@@ -1,0 +1,49 @@
+﻿@page
+@model ClientSystem.Pages.Views.EditModel
+@{
+}
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style>
+		div {
+			padding-top: 50px;
+			padding-right: 50px;
+			padding-bottom: 50px;
+			padding-left: 50px;
+		}
+
+		label {
+			display: inline-block;
+			width: 150px;
+			text-align: right;
+		}
+	</style>
+	<meta charset="UTF-8">
+	<title>Change Details</title>
+</head>
+@if (Model.errorMessage.Length > 0)
+{
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<strong>@Model.errorMessage</strong>
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+}
+<form method="POST">
+	<input type="hidden" name="id" value="@Model.client.clientID" />
+	<label>Full Name:</label>
+	<input type="text" name="name" value="@Model.client.fullName" /><br>
+	<label>Email:    </label>
+	<input type="text" name="email" value="@Model.client.email" /><br>
+	<label>Phone :</label>
+	<input type="text" name="phone" value="@Model.client.phoneNumber" /><br>
+	<label>Address:  </label>
+	<input type="text" name="address" value="@Model.client.address" /><br>
+	@if (Model.successMessage.Length > 0)
+	{
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			<strong>@Model.successMessage</strong>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+	}
+	<input type="submit" name="Save Changes" value="Save" />
+</form>
